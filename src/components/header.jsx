@@ -57,13 +57,16 @@ class Header extends Component {
               <li>
                 <a className="profile-pic" href="#2">
                   <img
-                    src="assets/plugins/images/users/varun.jpg"
+                    src="assets/plugins/images/users/d3.jpg"
                     alt="user-img"
-                    width="36"
-                    height="36"
+                    style={{
+                      objectFit: 'cover',
+                      width: '36px',
+                      height: '36px',
+                    }}
                     className="img-circle"
                   />
-                  <span className="text-white font-medium">Steave</span>
+                  <span className="text-white font-medium">Moise</span>
                 </a>
               </li>
             </ul>

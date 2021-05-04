@@ -1,10 +1,9 @@
 import React from 'react'
-import { data } from '../../data'
 
-const TableBody = () => {
+const TableBody = ({ customers, onDelete }) => {
   return (
     <tbody>
-      {data.customers.map((custom) => (
+      {customers.map((custom) => (
         <tr key={custom._id}>
           <td>{custom._id}</td>
           <td>{custom.name}</td>
@@ -12,10 +11,33 @@ const TableBody = () => {
           <td>{custom.phoneNumber}</td>
           <td>{custom.cardId}</td>
           <td>
-            <button className="btn btn-danger">Delete</button>
+            <button
+              onClick={() => onDelete(custom)}
+              style={{
+                backgroundColor: 'red',
+                borderRadius: '5px',
+                color: '#fff',
+                fontSize: '16px',
+                fontWeight: '500',
+              }}
+              className="btn"
+            >
+              Delete
+            </button>
           </td>
           <td>
-            <button className="btn btn-primary ">Update</button>
+            <button
+              style={{
+                backgroundColor: 'blue',
+                borderRadius: '5px',
+                color: '#fff',
+                fontSize: '16px',
+                fontWeight: '500',
+              }}
+              className="btn"
+            >
+              Update
+            </button>
           </td>
         </tr>
       ))}

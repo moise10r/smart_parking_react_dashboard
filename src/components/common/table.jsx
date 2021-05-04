@@ -2,11 +2,11 @@ import React from 'react'
 import TableBody from './tableBody'
 import TableHader from './tableHeader'
 
-const Table = () => {
+const Table = ({ onDelete, customers }) => {
   return (
     <table className="table text-nowrap">
       <TableHader />
-      <TableBody />
+      <TableBody onDelete={onDelete} customers={customers} />
     </table>
   )
 }

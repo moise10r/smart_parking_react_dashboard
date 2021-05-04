@@ -19,6 +19,25 @@ class Aside extends Component {
                 </a>
               </li>
             </ul>
+            <div
+              style={{
+                width: '100%',
+                height: '520px',
+                backgroundColor: '#000',
+                opacity: '0.7',
+              }}
+            >
+              <img
+                src="assets/plugins/images/users/bg.jpg"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  maxWidth: '100%',
+                  objectFit: 'cover',
+                }}
+                alt=""
+              />
+            </div>
           </nav>
         </div>
       </aside>

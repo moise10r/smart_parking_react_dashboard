@@ -1,5 +1,4 @@
- export const data ={
-    customers:[
+ export const customers=[
         {
             _id:"1",
             name:"Moise",
@@ -35,5 +34,29 @@
             phoneNumber:+250782301208,
             cardId:"2203335678",
         },
+        {
+            _id:"6",
+            name:"Rushanika",
+            plateNumber:1234567,
+            phoneNumber:+250782301208,
+            cardId:"2203335678",
+        },     {
+            _id:"7",
+            name:"Rushanika",
+            plateNumber:1234567,
+            phoneNumber:+250782301208,
+            cardId:"2203335678",
+        },     {
+            _id:"8",
+            name:"Rushanika",
+            plateNumber:1234567,
+            phoneNumber:+250782301208,
+            cardId:"2203335678",
+        },     {
+            _id:"9",
+            name:"Rushanika",
+            plateNumber:1234567,
+            phoneNumber:+250782301208,
+            cardId:"2203335678",
+        },
     ]
-}

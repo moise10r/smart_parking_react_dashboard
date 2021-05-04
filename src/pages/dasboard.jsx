@@ -3,9 +3,25 @@ import Aside from '../components/aside'
 import CustomerTable from '../components/customerTable'
 import Footer from '../components/footer'
 import Header from '../components/header'
-
+import { customers } from '../data'
 class Home extends Component {
-  state = {}
+  state = {
+    customers: [],
+  }
+  componentDidMount() {
+    this.setState({
+      customers,
+    })
+  }
+  handelDelete = (custom) => {
+    const newCustomers = this.state.customers.filter(
+      (c) => c._id !== custom._id,
+    )
+    this.setState({
+      customers: newCustomers,
+    })
+  }
+
   render() {
     return (
       <div
@@ -32,7 +48,12 @@ class Home extends Component {
                     href="#2"
                     target="_blank"
                     rel="noreferrer"
-                    className="btn btn-primary  d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white"
+                    style={{
+                      backgroundColor: 'blue',
+                      fontWeight: '500',
+                      fontSize: '16px',
+                    }}
+                    className="btn   d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white"
                   >
                     Add New Customer
                   </a>
@@ -41,7 +62,7 @@ class Home extends Component {
             </div>
           </div>
 
-          <CustomerTable />
+          <CustomerTable onDelete={this.handelDelete} customers={customers} />
           <Footer />
         </div>
       </div>
