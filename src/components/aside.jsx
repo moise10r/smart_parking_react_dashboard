@@ -22,7 +22,7 @@ class Aside extends Component {
             <div
               style={{
                 width: '100%',
-                height: '520px',
+                height: '650px',
                 backgroundColor: '#000',
                 opacity: '0.7',
               }}
