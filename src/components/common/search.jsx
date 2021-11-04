@@ -1,13 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 
-class Search extends Component {
-  state = {
-    data: "",
-  };
-
-  render() {
-    const { added, onChange, id, data } = this.props;
+const Search = (props) => {
+    const { added, onChange, id, data } = props;
     return (
       <div className={added}>
         <input
@@ -25,6 +20,5 @@ class Search extends Component {
       </div>
     );
   }
-}
 
 export default Search;
