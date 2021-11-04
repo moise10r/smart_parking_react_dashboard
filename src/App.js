@@ -10,32 +10,37 @@ import ProtectedRoute from './components/protectedRoute';
 
 class App extends Component {
   state = {
-    showMenu: 0,
-  };
-  handleShowMenu = () => {
-    let showMenu = this.state.showMenu;
-    showMenu += 1;
-    if (showMenu === 4) showMenu = 0;
-    this.setState({ showMenu });
+    isAuth: false,
+  }
+  handleLogin = () => {
+    this.setState({
+      isAuth: true,
+    });
   };
 
-
+  handleLogout = () => {
+    this.setState({
+      isAuth: false,
+    });
+  };
 render() {
+    const {isAuth} = this.state;
+    console.log(isAuth);
     return (
       <div>
         <Switch>
-          <Route path="/" exact component={Login} />
+          <Route path="/" exact render={(props) => <Login {...props} handleLogin={this.handleLogin} />} />
+
           <Route
             path="/"
-            render={(props) => <Navbar onShowMenu={this.handleShowMenu} />}
+            render={(props) => <Navbar {...props} handleLogout={this.handleLogout}/>}
           />
         </Switch>
         
         <ProtectedRoute
           path="/home"
-          isAuth={true}
+          isAuth={isAuth}
           component={Home}
-          ShowMenu={this.state.showMenu}
         />
       </div>
     );
@@ -43,5 +48,3 @@ render() {
 }
 
 export default App;
-
-

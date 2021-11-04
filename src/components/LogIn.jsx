@@ -21,12 +21,13 @@ class Login extends Component {
 		try {
 			const response = await axios.post('https://smart-parking-management.herokuapp.com/api/login/', this.state.allInput)
 			const user = response.data
+			console.log(user)
 			localStorage.setItem('currentUser', JSON.stringify(user))
 			this.props.history.push(`/home`)
+			this.props.handleLogin()
 		} catch(ex) {
 			this.setState({errorMessage: 'Your Email or Passor is incorrect'})
 		}
-	
 	};
 	render() {
 		const { handelChange, handelSubmit } = this;

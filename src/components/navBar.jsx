@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { IoIosList} from "react-icons/io";
 import { CgDarkMode, CgProfile } from "react-icons/cg";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class Navbar extends Component {
   state = {
@@ -9,14 +8,19 @@ class Navbar extends Component {
   };
   handleLogout = () => {
     localStorage.clear();
+		this.props.handleLogout();
+
   }
   componentDidMount() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.setState({currentUser});
+    if(currentUser) {
+      this.setState({currentUser});
+    } else {
+      return <Redirect to='/' />
+    }
   }
   
   render() {
-    const { onShowMenu } = this.props;
     const { currentUser } = this.state;
     return (
       <header className="header">
