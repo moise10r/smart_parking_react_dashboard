@@ -6,6 +6,7 @@ import { Route, Switch } from "react-router-dom";
 import Navbar from "./components/navBar";
 import Home from "./components/home";
 import Login from './components/LogIn';
+import ProtectedRoute from './components/protectedRoute';
 
 class App extends Component {
   state = {
@@ -18,7 +19,8 @@ class App extends Component {
     this.setState({ showMenu });
   };
 
-  render() {
+
+render() {
     return (
       <div>
         <Switch>
@@ -28,9 +30,12 @@ class App extends Component {
             render={(props) => <Navbar onShowMenu={this.handleShowMenu} />}
           />
         </Switch>
-        <Route
+        
+        <ProtectedRoute
           path="/home"
-          render={(props) => <Home ShowMenu={this.state.showMenu} {...props} />}
+          isAuth={true}
+          component={Home}
+          ShowMenu={this.state.showMenu}
         />
       </div>
     );
@@ -38,3 +43,5 @@ class App extends Component {
 }
 
 export default App;
+
+
