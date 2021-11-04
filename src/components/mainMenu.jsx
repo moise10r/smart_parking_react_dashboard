@@ -11,10 +11,10 @@ const MainMenu = (props) => {
         ShowMenu === 0
           ? "none"
           : ShowMenu === 1
-          ? "main-menu scroll-bar show border"
+          ? "none"
           : ShowMenu === 2
-          ? "main-menu scroll-bar show"
-          : "main-menu scroll-bar show"
+          ? "none"
+          : "none"
       }
     >
       <MenuList icon={<GiShop />} content="Dashboards" />

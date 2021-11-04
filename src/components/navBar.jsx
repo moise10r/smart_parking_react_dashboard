@@ -20,13 +20,6 @@ class Navbar extends Component {
     const { currentUser } = this.state;
     return (
       <header className="header">
-        <div className="sideOne">
-          <div className="list">
-            <span onClick={() => onShowMenu()}>
-              <IoIosList />
-            </span>
-          </div>
-        </div>
         <div className="log">
           <h1 style= {{fontStyle:"italic", marginLeft: "120px"}}>SMART PARKING</h1>
         </div>
