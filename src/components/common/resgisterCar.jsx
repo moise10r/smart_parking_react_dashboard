@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegUser, FaCar } from 'react-icons/fa';
 import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri';
@@ -6,8 +6,9 @@ import { AiOutlineMail } from 'react-icons/ai';
 import { MdContactPhone } from 'react-icons/md';
 import axios from 'axios';
 
-class NewCar extends Component {
-	state = {
+const NewCar = (props) => {
+
+	const [state, setstate] = useState({
 		allInput: {
 			name: '',
 			cardId: '',
@@ -17,50 +18,52 @@ class NewCar extends Component {
 		},
 		post:{},
 		errorMessage: '',
-	};
-	async	componentDidMount() {
-		const id = this.props.match.params.id;
-		const allInput = { ...this.state.allInput };
-		const{data: cars }= await axios.get('https://smart-parking-management.herokuapp.com/api/customers');
-		if (id !== 'new') {
-			const car = cars.filter((car) => car._id === id);
-			allInput._id = null;
-			this.setState({ allInput: car[0] });
-		} else {
-			this.setState({ allInput });
+	});
+	useEffect(() => {
+		async function fetchData(){
+			const id = props.match.params.id;
+			const allInput = { ...state.allInput };
+			const{data: cars }= await axios.get('https://smart-parking-management.herokuapp.com/api/customers');
+			if (id !== 'new') {
+				const car = cars.filter((car) => car._id === id);
+				allInput._id = null;
+				setstate({ allInput: car[0] });
+			} else {
+				setstate({ allInput });
+			}
 		}
-	}
+		fetchData()
+	}, []);
+	
 
-	handelChange = ({ currentTarget: input }) => {
-		const allInput = { ...this.state.allInput };
+	const handelChange = ({ currentTarget: input }) => {
+		const allInput = { ...state.allInput };
 		allInput[input.name] = input.value;
-		this.setState({ allInput });
+		setstate({ allInput });
 	};
-	handelSubmit = async (e) => {
+	const handelSubmit = async (e) => {
 		e.preventDefault();
-		const id = this.props.match.params.id;
+		const id = props.match.params.id;
 		if (id === 'new') {
 				const { data: post } = await axios.post(
 					' https://smart-parking-management.herokuapp.com/api/customer',
-					this.state.allInput
+					state.allInput
 				);
-				this.setState({post})
-				this.props.history.push(`/home`)
+				setstate({post})
+				props.history.push(`/home`)
 		} else {
 			const { data: post } = await axios.put(
 				` https://smart-parking-management.herokuapp.com/api/customer/${id}`,
-				this.state.allInput
+				state.allInput
 				);
-			this.setState({post})
+			setstate({post})
 
-			this.props.history.push('/home')
+			props.history.push('/home')
 		}
 
 	};
-	render() {
-		const { handelChange, handelSubmit } = this;
-		const { name, cardId, carMark, plateNumber, phoneNumber } = this.state.allInput;
-		const {errorMessage} = this.state;
+		const { name, cardId, carMark, plateNumber, phoneNumber } = state.allInput;
+		const {errorMessage} = state;
 		return (
 			<div className='register'>
 				{errorMessage && <h1>{errorMessage}</h1>}
@@ -158,7 +161,6 @@ class NewCar extends Component {
 				</form>
 			</div>
 		);
-	}
 }
 
 export default NewCar;
