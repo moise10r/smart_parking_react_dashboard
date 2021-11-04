@@ -3,9 +3,9 @@ import "./sass/App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Route, Switch } from "react-router-dom";
 
-import Navbar from "./component/navBar";
-import Home from "./component/home";
-import Login from "./component/LogIn";
+import Navbar from "./components/navBar";
+import Home from "./components/home";
+import Login from './components/LogIn';
 
 class App extends Component {
   state = {
