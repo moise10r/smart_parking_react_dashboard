@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { RiArrowRightSLine } from 'react-icons/ri';
 import axios from 'axios';
+import storage from '../utils/localStorage';
 
 class Login extends Component {
 	state = {
@@ -10,7 +11,6 @@ class Login extends Component {
 		},
 		errorMessage: '',
 	};
-
 	handelChange = ({ currentTarget: input }) => {
 		const allInput = { ...this.state.allInput };
 		allInput[input.name] = input.value;
@@ -19,10 +19,8 @@ class Login extends Component {
 	handelSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const response = await axios.post('https://smart-parking-management.herokuapp.com/api/login/', this.state.allInput)
-			const user = response.data
-			console.log(user)
-			localStorage.setItem('currentUser', JSON.stringify(user))
+			const {data: user} = await axios.post('https://smart-parking-management.herokuapp.com/api/login/', this.state.allInput)
+			storage.set('currentUser', user)
 			this.props.history.push(`/home`)
 			this.props.handleLogin()
 		} catch(ex) {

@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import { CgDarkMode, CgProfile } from "react-icons/cg";
 import { Link, Redirect } from 'react-router-dom';
+import storage from '../utils/localStorage';
 
 class Navbar extends Component {
   state = {
     currentUser:{}
   };
   handleLogout = () => {
-    localStorage.clear();
+    storage.clear();
 		this.props.handleLogout();
 
   }
   componentDidMount() {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser = storage.get('currentUser');
     if(currentUser) {
       this.setState({currentUser});
     } else {

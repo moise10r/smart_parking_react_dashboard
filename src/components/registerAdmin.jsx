@@ -29,9 +29,7 @@ class NewAdmin extends Component {
 			this.state.allInput
 		);
     this.setState({post})
-    setTimeout(() => {
-      this.props.history.push(`/home`);
-    },500)
+    this.props.history.push(`/home`);
 	};
 	render() {
 		const { handelChange, handelSubmit } = this;
