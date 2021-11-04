@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import _ from "lodash";
 import Pagination from "./common/pagination";
-import paginater from "./common/paginate";
+import paginater from "../utils/paginate";
 import Search from "./common/search";
 import Car from "./common/car";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
