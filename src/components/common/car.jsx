@@ -1,9 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-class Car extends Component {
-  render() {
-    const { carInfo: car, onModify, onDelete } = this.props;
+const Car = ({ carInfo: car, onModify, onDelete }) =>{
     return (
       <tr>
         <th></th>
@@ -33,6 +31,5 @@ class Car extends Component {
       </tr>
     );
   }
-}
 export default Car;
 
