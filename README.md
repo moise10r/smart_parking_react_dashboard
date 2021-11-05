@@ -1,7 +1,10 @@
-# Getting Started with Create React App
+# SMART PARKING
+![park](https://user-images.githubusercontent.com/57562869/139311658-a54d85fe-2213-43f6-a84d-e60dda7374fa.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## live demo
+[live demo](https://lucid-einstein-12b907.netlify.app)
 ## Available Scripts
 
 In the project directory, you can run:
