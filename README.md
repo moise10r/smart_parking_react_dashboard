@@ -3,8 +3,6 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## live demo
-[live demo](https://lucid-einstein-12b907.netlify.app)
 ## Built With
 
 - ReactJS
@@ -13,11 +11,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Live demon
 
-[See Live](https://determined-archimedes-c0ea66.netlify.app/)
-
-## Video 
-
-[presentation video](https://www.loom.com/share/83bb11549f314108ab9866f9c78f20e0)
 
 ## Getting Started
 
@@ -26,8 +19,8 @@ To get a local copy up and running follow these simple example steps.
 ### Setup
 
 ```bash
-git clone git@github.com:moise10r/covid_19_app.git
-cd ./covid_19_app
+git clone git@github.com:moise10r/smart_parking_react_dashboard.git
+cd ./smart_parking_react_dashboard
 ```
 
 ### Install
