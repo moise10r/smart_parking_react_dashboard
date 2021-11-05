@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegUser, FaCar } from 'react-icons/fa';
 import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri';
@@ -6,9 +6,9 @@ import { AiOutlineMail } from 'react-icons/ai';
 import { MdContactPhone } from 'react-icons/md';
 import axios from 'axios';
 
-const NewCar = (props) => {
+class NewCar extends Component {
 
-	const [state, setstate] = useState({
+	state = {
 		allInput: {
 			name: '',
 			cardId: '',
@@ -18,57 +18,56 @@ const NewCar = (props) => {
 		},
 		post:{},
 		errorMessage: '',
-	});
-	useEffect(() => {
-		async function fetchData(){
-			const id = props.match.params.id;
-			const allInput = { ...state.allInput };
+	};
+	async componentDidMount() {
+			const id = this.props.match.params.id;
+			const allInput = { ...this.state.allInput };
 			const{data: cars }= await axios.get('https://smart-parking-management.herokuapp.com/api/customers');
 			if (id !== 'new') {
 				const car = cars.filter((car) => car._id === id);
 				allInput._id = null;
-				setstate({ allInput: car[0] });
+				this.setState({ allInput: car[0] });
 			} else {
-				setstate({ allInput });
-			}
-		}
-		fetchData()
-	}, []);
+				this.setState({ allInput });
+			}	
+	}
 	
 
-	const handelChange = ({ currentTarget: input }) => {
-		const allInput = { ...state.allInput };
+	handelChange = ({ currentTarget: input }) => {
+		const allInput = { ...this.state.allInput };
 		allInput[input.name] = input.value;
-		setstate({ allInput });
+		this.setState({ allInput });
 	};
-	const handelSubmit = async (e) => {
+	handelSubmit = async (e) => {
 		e.preventDefault();
-		const id = props.match.params.id;
+		const id = this.props.match.params.id;
 		if (id === 'new') {
 				const { data: post } = await axios.post(
 					' https://smart-parking-management.herokuapp.com/api/customer',
-					state.allInput
+					this.state.allInput
 				);
-				setstate({post})
-				props.history.push(`/home`)
+				this.setState({post})
+				this.props.history.push(`/home`)
 		} else {
 			const { data: post } = await axios.put(
 				` https://smart-parking-management.herokuapp.com/api/customer/${id}`,
-				state.allInput
+				this.state.allInput
 				);
-			setstate({post})
+			this.setState({post})
 
-			props.history.push('/home')
+			this.props.history.push('/home')
 		}
 
 	};
-		const { name, cardId, carMark, plateNumber, phoneNumber } = state.allInput;
-		const {errorMessage} = state;
+	render() {
+
+		const { name, cardId, carMark, plateNumber, phoneNumber } = this.state.allInput;
+		const {errorMessage} = this.state;
 		return (
 			<div className='register'>
 				{errorMessage && <h1>{errorMessage}</h1>}
 				<h1>REGISTER A CAR</h1>
-				<form onSubmit={handelSubmit}>
+				<form onSubmit={this.handelSubmit}>
 					<label htmlFor='driver'>
 						<p>Driver's name</p>
 						<div className='input-content'>
@@ -78,7 +77,7 @@ const NewCar = (props) => {
 								value={name}
 								type='text'
 								placeholder="Driver's name"
-								onChange={handelChange}
+								onChange={this.handelChange}
 								required
 							/>
 							<span>
@@ -95,7 +94,7 @@ const NewCar = (props) => {
 								type='text'
 								value={cardId}
 								placeholder='Enter card ID'
-								onChange={handelChange}
+								onChange={this.handelChange}
 							/>
 							<span>
 								<AiOutlineMail />
@@ -111,7 +110,7 @@ const NewCar = (props) => {
 								type='text'
 								value={carMark}
 								placeholder="your car's type please"
-								onChange={handelChange}
+								onChange={this.handelChange}
 							/>
 							<span>
 								<FaCar />
@@ -126,7 +125,7 @@ const NewCar = (props) => {
 								type='text'
 								name='plateNumber'
 								value={plateNumber}
-								onChange={handelChange}
+								onChange={this.handelChange}
 								placeholder="Enter Car'plaque"
 							/>
 							<span>
@@ -141,7 +140,7 @@ const NewCar = (props) => {
 								id='number'
 								name='phoneNumber'
 								value={phoneNumber}
-								onChange={handelChange}
+								onChange={this.handelChange}
 								type='text'
 								placeholder='+250...'
 							/>
@@ -162,5 +161,6 @@ const NewCar = (props) => {
 			</div>
 		);
 }
+	}
 
 export default NewCar;

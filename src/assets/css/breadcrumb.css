@@ -1,0 +1,36 @@
+/*******************
+ Breadcrumb and page title
+*******************/
+.page-breadcrumb {
+  padding: 13px 25px;
+}
+.page-breadcrumb .page-title {
+  margin-bottom: 0px;
+  font-weight: 700;
+}
+.page-breadcrumb .breadcrumb {
+  background: 0 0;
+  margin-bottom: 0;
+  padding: 0;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.breadcrumb {
+  background: 0 0;
+  margin-bottom: 0;
+  padding: 0;
+  margin-top: 8px;
+  font-size: 12px;
+}
+.breadcrumb a {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  font-weight: 300;
+}
+.breadcrumb a:hover {
+  color: #000;
+}
+.breadcrumb .breadcrumb-item.active a {
+  color: #41b3f9;
+}

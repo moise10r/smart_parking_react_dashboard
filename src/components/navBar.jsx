@@ -36,8 +36,9 @@ class Navbar extends Component {
           </div>
           <div className="logged">
             <span>{currentUser.name}</span>
-            <div className="picture">
-              <CgProfile />
+            <div className="picture" style={{borderRaduis:"50%"}}>
+              {/* <CgProfile /> */}
+              <img src={`https://ui-avatars.com/api/?name=${currentUser.name}&background=random`} alt="profile" />
             </div>
             <span onClick={this.handleLogout}><Link style={{ textDecoration: "none"}} to='/'>Log out</Link> </span>
           </div>
