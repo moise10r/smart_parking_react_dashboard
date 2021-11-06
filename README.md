@@ -6,7 +6,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Built With
 
 - ReactJS
-- Redux
 - Sass
 
 ## Live demon
@@ -69,8 +68,6 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - Microverse
-- origin design provided by [Nelson Sakwa on Behance](https://www.behance.net/sakwadesignstudio)
-- Api Provided by [Covid-19-API](https://github.com/M-Media-Group/Covid-19-API)
 
 ## 📝 License
 
