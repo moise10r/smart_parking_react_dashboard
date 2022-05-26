@@ -1,7 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import twilio from 'twilio'
+import axios from "axios";
+
 
 const Car = ({ carInfo: car, onModify, onDelete }) =>{
+
+    const onAlert = async (clientNumber) => {
+      console.log(clientNumber);
+
+        await(axios.post("https://smart-parking-management.herokuapp.com/api/sendAlert", {cNumber: `${clientNumber}`}))
+        .then((message) => console.log(message))
+        .catch((err) => console.log(err));
+    }
+
     return (
       <tr>
         <th></th>
@@ -21,6 +33,11 @@ const Car = ({ carInfo: car, onModify, onDelete }) =>{
             className="btn btn-dark"
           >
             Modify
+          </button>
+        </td>
+        <td>
+          <button onClick={() => onAlert(car.phoneNumber)} className="btn btn-warning">
+            Alert
           </button>
         </td>
         <td>
