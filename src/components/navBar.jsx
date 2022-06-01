@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { CgDarkMode, CgProfile } from "react-icons/cg";
+import { CgDarkMode } from "react-icons/cg";
 import { Link, Redirect } from 'react-router-dom';
 import storage from '../utils/localStorage';
 
