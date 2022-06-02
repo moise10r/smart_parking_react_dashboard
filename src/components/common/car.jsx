@@ -9,7 +9,7 @@ const Car = ({ carInfo: car, onModify, onDelete }) =>{
     const onAlert = async (clientNumber) => {
       console.log(clientNumber);
 
-        await(axios.post("https://smart-parking-management.herokuapp.com/api/sendAlert", {cNumber: `${clientNumber}`}))
+        await(axios.get(`https://smart-parking-management.herokuapp.com/api/sendAlert?cNumber=${clientNumber}`))
         .then((message) => console.log(message))
         .catch((err) => console.log(err));
     }
