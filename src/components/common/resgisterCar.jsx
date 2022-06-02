@@ -49,6 +49,10 @@ class NewCar extends Component {
 				this.setState({post})
 				this.props.history.push(`/home`)
 		} else {
+			console.log(this.state.allInput);
+			delete this.state.allInput._id
+			delete this.state.allInput.__v
+			console.log(this.state.allInput);
 			const { data: post } = await axios.put(
 				` https://smart-parking-management.herokuapp.com/api/customer/${id}`,
 				this.state.allInput
