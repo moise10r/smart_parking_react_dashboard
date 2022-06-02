@@ -122,6 +122,7 @@ class MainSide extends Component {
                   </th>
                   <th scope="col">Phone Number</th>
                   <th scope="col">Modify Data</th>
+                  <th scope="col">Alert</th>
                   <th scope="col">Delete</th>
                 </tr>
               </thead>
