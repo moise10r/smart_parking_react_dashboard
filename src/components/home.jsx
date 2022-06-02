@@ -31,10 +31,10 @@ class Home extends Component {
 		this.setState({ garage: data });
 
 	}
-	async componentDidUpdate() {
-		const {data} = await axios.get(' https://smart-parking-management.herokuapp.com/api/customers')
-		this.setState({ garage: data });
-	}
+	// async componentDidUpdate() {
+	// 	const {data} = await axios.get(' https://smart-parking-management.herokuapp.com/api/customers')
+	// 	this.setState({ garage: data });
+	// }
 	handleChangePage = (page) => {
 		this.setState({ currentPage: page });
 	};
