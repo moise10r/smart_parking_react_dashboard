@@ -71,7 +71,7 @@ class MainSide extends Component {
     return (
       <div className="main-side">
         <div className="side-content">
-          <h1>CARS REGISTRED</h1>
+          <h1>CARS REGISTERED</h1>
           <div className="buttons">
             <Link to="/home/registerNewCar/new" className="add">
               ADD NEW CAR
